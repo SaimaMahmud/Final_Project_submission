@@ -1,0 +1,88 @@
+extends layout
+
+block content
+
+  // Difficult
+  div.jumbotron.text-center
+    h1 Bitcoin Simulator
+    div.row
+      div.col-md-2.col-md-offset-5
+        h4 Mine Blockchain
+        div.form-group
+          label(for='difficulty')
+          select.form-control(name='difficulty', id='difficulty')
+            option(value='1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value='4') 4
+            option(value='5') 5
+        button.btn.btn-default(onclick='initBitcoin()') Submit
+  // DIFFICULT
+  // Transaction
+  div.jumbotron
+    div.container
+      div.row
+        // Create transaction
+        div.col-md-4
+          h3 Create New Transaction
+          div.form-group
+            label(for='fromUser') From User
+            select.form-control(name='fromUser', id='fromUser')
+          div.form-group
+            label(for='toUser') To User
+            select.form-control(name='toUser', id='toUser')
+          div.form-group
+            label(for='amount') Amount
+            input.form-control(type='number', min='50', max='100', id='amount')
+          button.btn.btn-default(onclick='createTransaction()') Submit
+        // CREATE TRANSACTION
+        // Recent transaction
+        div.col-md-4
+          h2 Pending Transactions
+          table.table.table-striped
+            thead
+              tr
+                th From
+                th To
+                th Amount
+              tbody#recentTransactions
+        // RECENT TRANSACTION
+        // Balances
+        div.col-md-4
+          h2 Current Balances
+          table.table.table-striped
+            thead
+              tr
+                th User
+                th Balance
+              tbody#balance
+        // BALANCES
+  // TRANSACTION
+  // Miner
+  div.jumbotron
+    div.container
+      div.row
+        div.col-md-6
+          h3 Mine Blockchain
+          div.form-group
+            label(for='miner') Select Miner
+            select.form-control(name='miner', id='miner')
+          button.btn.btn-default(onclick='mine()') Submit
+        div.col-md-6
+          h2 Current chain
+          h5#genesisBlock
+          table.table.table-striped
+            thead
+              tr
+                th Previous Block Hash
+                th Block Hash
+                th Total Transactions
+              tbody#recentMines
+  // MINER
+
+  div.modal.hide(id = "pleaseWaitDialog", data-backdrop = "static", data-keyboard = "false", style="background-color: white;")
+    div.modal-header
+      h1 Please Wait
+    div.modal-body
+      div(id = "ajax_loader")
+        img(src = "/images/ajax-loader.gif", style="display: block; margin-left: auto; margin-right: auto;")
