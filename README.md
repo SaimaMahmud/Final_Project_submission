@@ -12,6 +12,9 @@ Because these are node projects, after cloning this repo you will need to run th
 The run command for this project is:
 * npm start
 
+ ![Alt text]
+(https://github.com/SaimaMahmud/Final_Project_submission/blob/master/Context%20Diagram.png)
+
  
 
 
